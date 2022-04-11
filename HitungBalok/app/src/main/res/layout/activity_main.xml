@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/marginSize"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvPanjang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textPanjang"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/etPanjang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/tvPanjang"
+        />
+
+    <TextView
+        android:id="@+id/tvLebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textLebar"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        android:layout_below="@+id/etPanjang"
+        android:layout_marginTop="@dimen/marginSmallSize"
+        />
+
+    <EditText
+        android:id="@+id/etLebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/tvLebar"
+        />
+
+    <TextView
+        android:id="@+id/tvTinggi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textTinggi"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        android:layout_below="@+id/etLebar"
+        android:layout_marginTop="@dimen/marginSmallSize"
+        />
+
+    <EditText
+        android:id="@+id/etTinggi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:layout_below="@+id/tvTinggi"
+        />
+
+    <RadioGroup
+        android:id="@+id/rgBalok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/etTinggi"
+        android:layout_marginTop="@dimen/marginSmallSize"
+        >
+
+        <RadioButton
+            android:id="@+id/rbLuas"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/radioLuas"
+            android:layout_weight="1"
+            android:checked="true"
+            />
+
+        <RadioButton
+            android:id="@+id/rbVolume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/radioVolume"
+            />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/llBalok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/rgBalok"
+        android:layout_marginTop="@dimen/marginSmallSize"
+        >
+
+
+        <Button
+            android:id="@+id/btnHitung"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnHitung"
+            android:layout_weight="1"
+            android:layout_marginEnd="@dimen/marginSmallSize"
+            />
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/btnReset"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/marginSmallSize"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvHasil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/llBalok"
+        android:layout_marginTop="@dimen/marginSmallSize"
+        tools:text="Tes Tools"
+        />
+
+</RelativeLayout>

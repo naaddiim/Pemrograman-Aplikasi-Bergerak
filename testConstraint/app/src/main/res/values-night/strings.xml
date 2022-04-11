@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="initialValue">0</string>
+    <string name="plus10">+10</string>
+    <string name="minus5">-5</string>
+    <string name="minus10">-10</string>
+    <string name="minus15">-15</string>
+    <string name="minus20">-20</string>
+    <string name="plus20">+20</string>
+    <string name="plus40">+40</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textPanjang">Panjang</string>
+    <string name="textLebar">Lebar</string>
+    <string name="textHitungLuas">Hitung Luas</string>
+</resources>

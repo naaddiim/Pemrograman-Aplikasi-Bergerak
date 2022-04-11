@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="initialValue">0</string>
+    <string name="btnUpText">Up</string>
+    <string name="btnResetText">Reset</string>
+</resources>
