@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
         rvFood.setLayoutManager(new LinearLayoutManager(this));
         rvFood.setAdapter(foodViewAdapter);
 
-
-
         //shift+f6 untuk mengganti semua kata yang sama
         //ctrl+d diujung line untuk menduplikat 1 line tanpat harus di blok
 
