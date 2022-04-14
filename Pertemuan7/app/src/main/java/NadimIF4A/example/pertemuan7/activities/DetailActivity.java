@@ -1,10 +1,12 @@
-package NadimIF4A.example.pertemuan7;
+package NadimIF4A.example.pertemuan7.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import NadimIF4A.example.pertemuan7.R;
 
 public class DetailActivity extends AppCompatActivity {
 

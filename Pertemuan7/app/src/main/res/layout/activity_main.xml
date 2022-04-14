@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -61,206 +61,15 @@
         android:layout_marginStart="8dp"
         />
 
-    <RelativeLayout
-        android:id="@+id/rlIndomie2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnLike">
-
-        <ImageView
-            android:id="@+id/ivIndomie2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/indomie2"
-            android:scaleType="centerCrop"
-            />
-
-        <ImageView
-            android:id="@+id/ivMask2"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:alpha="0.2"
-            android:scaleType="centerCrop"
-            android:src="#009688" />
-
-        <TextView
+        <!-- tampilkan list item dari layout -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFood"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:text="Indomie Kari Ayam"
-            android:textColor="@color/black"
-            android:textSize="19sp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textStyle="bold"
-            android:layout_alignBottom="@+id/ivIndomie2"
-            android:layout_marginBottom="8dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="-25dp"
-            android:background="#D15046"
-            android:padding="2dp"
-            android:rotation="45"
-            android:text="          New       "
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvLike2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0 likes"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:layout_marginStart="16dp"
+            android:layout_below="@id/btnNoodle"
             android:layout_marginTop="16dp"
-            />
-
-
-
-    </RelativeLayout>
-
-    <Button
-        android:id="@+id/btnLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Like"
-        android:layout_below="@id/rlIndomie"
-        android:drawableLeft="@drawable/ic_baseline_thumb_up_24"
-        android:drawableTint="@color/white"
-        android:backgroundTint="#9C4848"
-        />
-    <Button
-        android:id="@+id/btnDislike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DisLike"
-        android:layout_below="@id/rlIndomie"
-        android:layout_toRightOf="@id/btnLike"
-        android:layout_marginStart="8dp"
-        android:drawableLeft="@drawable/ic_thumb_down_24"
-        android:drawableTint="@color/white"
-        android:backgroundTint="#3681AA"
-        />
-
-        <Button
-            android:id="@+id/btnMap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Map"
-            android:layout_below="@id/rlIndomie"
-            android:layout_toRightOf="@id/btnDislike"
-            android:layout_marginStart="8dp"
-            android:drawableLeft="@drawable/ic_map_24"
-            android:drawableTint="@color/white"
-            android:backgroundTint="#40A196"
-            />
-
-        <RelativeLayout
-            android:id="@+id/rlIndomie"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnNoodle">
-
-            <ImageView
-                android:id="@+id/ivIndomie"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/indomie"
-                android:scaleType="centerCrop"
-                />
-
-            <ImageView
-                android:id="@+id/ivMask"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:alpha="0.2"
-                android:scaleType="centerCrop"
-                android:src="#009688" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:text="Indomie Mi Goreng"
-                android:textColor="@color/white"
-                android:textSize="19sp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:textStyle="bold"
-                android:layout_alignBottom="@+id/ivIndomie"
-                android:layout_marginBottom="8dp"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="-25dp"
-                android:background="#D15046"
-                android:padding="2dp"
-                android:rotation="45"
-                android:text="          New       "
-                android:textColor="@color/white"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0 likes"
-                android:textSize="15sp"
-                android:textColor="@color/white"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                />
-
-
-
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/btnLike2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Like"
-            android:layout_below="@id/rlIndomie2"
-            android:drawableLeft="@drawable/ic_baseline_thumb_up_24"
-            android:drawableTint="@color/white"
-            android:backgroundTint="#9C4848"
-            />
-        <Button
-            android:id="@+id/btnDislike2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DisLike"
-            android:layout_below="@id/rlIndomie2"
-            android:layout_toRightOf="@id/btnLike2"
-            android:layout_marginStart="8dp"
-            android:drawableLeft="@drawable/ic_thumb_down_24"
-            android:drawableTint="@color/white"
-            android:backgroundTint="#3681AA"
-            />
-
-        <Button
-            android:id="@+id/btnShare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Share"
-            android:layout_below="@id/rlIndomie2"
-            android:layout_toRightOf="@id/btnDislike2"
-            android:layout_marginStart="8dp"
-            android:drawableLeft="@drawable/ic_share_24"
-            android:drawableTint="@color/white"
-            android:backgroundTint="#E8BA6D"
+            tools:listitem="@layout/item_food"
+            tools:itemCount="5"
             />
 
     </RelativeLayout>
