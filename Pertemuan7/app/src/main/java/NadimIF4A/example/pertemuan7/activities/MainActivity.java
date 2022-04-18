@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         food.setId(0);
         food.setNama("Indomie Goreng");
         food.setThumbnail(R.drawable.indomie);
+        food.setDeskripsi("Indomie terenak");
         data.add(food);
 
         //masukan data kedua
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         food.setId(1);
         food.setNama("Kari Ayam");
         food.setThumbnail(R.drawable.indomie2);
+        food.setDeskripsi("Indomie kuah terenak");
         data.add(food);
 
         //dan seterusnya

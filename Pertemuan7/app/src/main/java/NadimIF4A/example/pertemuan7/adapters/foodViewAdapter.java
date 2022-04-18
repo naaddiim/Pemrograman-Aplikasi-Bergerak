@@ -1,5 +1,6 @@
 package NadimIF4A.example.pertemuan7.adapters;
 
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import NadimIF4A.example.pertemuan7.R;
+import NadimIF4A.example.pertemuan7.activities.DetailActivity;
 import NadimIF4A.example.pertemuan7.models.food;
 
 //Ketik alt enter pada error line
@@ -35,8 +37,25 @@ public class foodViewAdapter extends RecyclerView.Adapter<foodViewAdapter.ViewHo
     //mem bind apa yang ingin ditampilkan
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.ivFood.setImageResource(data.get(position).getThumbnail());
-        holder.tvFoodName.setText(data.get(position).getNama());
+        int pos = holder.getAdapterPosition();
+
+        holder.ivFood.setImageResource(data.get(pos).getThumbnail());
+        holder.tvFoodName.setText(data.get(pos).getNama());
+        //buat onclick Listener untuk intent ke detail
+        //itemView = 1 kartu penuh
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), DetailActivity.class);
+                intent.putExtra("FOOD_NAME", data.get(pos).getNama());
+                intent.putExtra("THUMBNAIL", data.get(pos).getThumbnail());
+                intent.putExtra("RATE", "5.0");
+                intent.putExtra("VOTE", "125");
+                intent.putExtra("RELEASE_DATE", "18-04-2022");
+                intent.putExtra("OVERVIEW", data.get(pos).getDeskripsi());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     //set panjang list
