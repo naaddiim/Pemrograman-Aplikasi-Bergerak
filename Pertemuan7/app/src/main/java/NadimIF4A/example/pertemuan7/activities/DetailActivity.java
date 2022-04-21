@@ -10,7 +10,10 @@ import NadimIF4A.example.pertemuan7.R;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private String foodName, rating, overview, releaseDate;
+    private String foodName;
+    private float rating;
+    private String overview;
+    private String releaseDate;
     private Integer voting;
     private int thumbnail;
 
@@ -24,7 +27,7 @@ public class DetailActivity extends AppCompatActivity {
 
         foodName = getIntent().getExtras().getString("FOOD_NAME");
         thumbnail = getIntent().getExtras().getInt("THUMBNAIL");
-        rating = getIntent().getExtras().getString("RATE");
+        rating = getIntent().getExtras().getFloat("RATE");
         voting = getIntent().getExtras().getInt("VOTE");
         releaseDate = getIntent().getExtras().getString("RELEASE_DATE");
         overview = getIntent().getExtras().getString("OVERVIEW");
@@ -38,9 +41,22 @@ public class DetailActivity extends AppCompatActivity {
 
         ivThumbnail.setImageResource(thumbnail);
         tvFoodName.setText(foodName);
-        tvRating.setText(rating);
+        tvRating.setText(String.valueOf(rating));
         tvVoting.setText(String.valueOf(voting));
         tvReleaseDate.setText(releaseDate);
         tvOverview.setText(overview);
+    }
+
+    //tujuan ????
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

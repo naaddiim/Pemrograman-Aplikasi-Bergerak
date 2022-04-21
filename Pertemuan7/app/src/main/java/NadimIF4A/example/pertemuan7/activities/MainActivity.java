@@ -2,6 +2,7 @@ package NadimIF4A.example.pertemuan7.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +22,7 @@ import java.util.List;
 import NadimIF4A.example.pertemuan7.R;
 import NadimIF4A.example.pertemuan7.adapters.foodViewAdapter;
 import NadimIF4A.example.pertemuan7.models.food;
+import NadimIF4A.example.pertemuan7.utils.ItemClickListener;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvFood;
@@ -36,9 +38,13 @@ public class MainActivity extends AppCompatActivity {
         rvFood = findViewById(R.id.rvFood);
 
         foodList = getDummyData();
-        foodViewAdapter = new foodViewAdapter(foodList);
-        rvFood.setLayoutManager(new LinearLayoutManager(this));
+        //methode onFoodItemClick buat sendiri
+        foodViewAdapter = new foodViewAdapter((ItemClickListener<food>) this::onFoodItemClick);
+//        rvFood.setLayoutManager(new LinearLayoutManager(this));
+        //hanya bisa set jumlah kolom
+        rvFood.setLayoutManager(new GridLayoutManager(this, 2));
         rvFood.setAdapter(foodViewAdapter);
+        foodViewAdapter.setData(foodList);
 
         //shift+f6 untuk mengganti semua kata yang sama
         //ctrl+d diujung line untuk menduplikat 1 line tanpat harus di blok
@@ -58,6 +64,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //intent pindah ke method ini
+    private void onFoodItemClick(food food, int i) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("FOOD_NAME", food.getNama());
+        intent.putExtra("THUMBNAIL", food.getThumbnail());
+        intent.putExtra("RATE", food.getRate());
+        intent.putExtra("VOTE", food.getVote());
+        intent.putExtra("RELEASE_DATE", food.getTanggalRilis());
+        intent.putExtra("OVERVIEW", food.getDeskripsi());
+        startActivity(intent);
+    }
+
     private List<food> getDummyData() {
         List<food> data = new ArrayList<>();
         //masukan data pertama
@@ -66,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
         food.setNama("Indomie Goreng");
         food.setThumbnail(R.drawable.indomie);
         food.setDeskripsi("Indomie terenak");
+        food.setVote(250);
+        food.setRate(4.1f);
+        food.setTanggalRilis("25-04-2022");
         data.add(food);
 
         //masukan data kedua
@@ -74,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
         food.setNama("Kari Ayam");
         food.setThumbnail(R.drawable.indomie2);
         food.setDeskripsi("Indomie kuah terenak");
+        food.setVote(150);
+        food.setRate(3.9f);
+        food.setTanggalRilis("21-04-2022");
         data.add(food);
 
         //dan seterusnya

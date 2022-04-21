@@ -7,6 +7,9 @@ public class food {
     private String kategori;
     private int thumbnail;
     private String lokasi;
+    private int vote;
+    private float rate;
+    private String tanggalRilis;
 
     //Generate Konstruktor
     public food() {
@@ -59,5 +62,29 @@ public class food {
 
     public void setLokasi(String lokasi) {
         this.lokasi = lokasi;
+    }
+
+    public int getVote() {
+        return vote;
+    }
+
+    public void setVote(int vote) {
+        this.vote = vote;
+    }
+
+    public float getRate() {
+        return rate;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
+    }
+
+    public String getTanggalRilis() {
+        return tanggalRilis;
+    }
+
+    public void setTanggalRilis(String tanggalRilis) {
+        this.tanggalRilis = tanggalRilis;
     }
 }
