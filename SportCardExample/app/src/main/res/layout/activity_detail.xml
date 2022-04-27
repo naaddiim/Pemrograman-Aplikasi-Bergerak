@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/ivSportDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            />
+
+        <TextView
+            android:id="@+id/tvTitleDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_alignBottom="@id/ivSportDetail"
+            android:padding="16dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            tools:text="Title Detail"
+            />
+
+        <TextView
+            android:id="@+id/tvNewsTitleDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivSportDetail"
+            android:padding="8dp"
+            android:text="News"
+            android:textColor="?colorSecondary"
+            />
+
+        <TextView
+            android:id="@+id/tvSubTitleDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNewsTitleDetail"
+            android:padding="8dp"
+            style="@style/TextAppearance.AppCompat.Subhead"
+            tools:text="Sub Title"
+
+            />
+        
+    </RelativeLayout>
+
+</ScrollView>
