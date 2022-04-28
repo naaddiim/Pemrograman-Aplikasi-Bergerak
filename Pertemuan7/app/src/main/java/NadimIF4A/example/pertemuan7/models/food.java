@@ -1,6 +1,9 @@
 package NadimIF4A.example.pertemuan7.models;
 
-public class food {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class food implements Parcelable {
     private int id;
     private String nama;
     private String deskripsi;
@@ -11,9 +14,33 @@ public class food {
     private float rate;
     private String tanggalRilis;
 
-    //Generate Konstruktor
+    //Generate Konstruktor wajib untuk Parcelable
     public food() {
     }
+
+    protected food(Parcel in) {
+        id = in.readInt();
+        nama = in.readString();
+        deskripsi = in.readString();
+        kategori = in.readString();
+        thumbnail = in.readInt();
+        lokasi = in.readString();
+        vote = in.readInt();
+        rate = in.readFloat();
+        tanggalRilis = in.readString();
+    }
+
+    public static final Creator<food> CREATOR = new Creator<food>() {
+        @Override
+        public food createFromParcel(Parcel in) {
+            return new food(in);
+        }
+
+        @Override
+        public food[] newArray(int size) {
+            return new food[size];
+        }
+    };
 
     //Generate Setter Getter
     public int getId() {
@@ -86,5 +113,23 @@ public class food {
 
     public void setTanggalRilis(String tanggalRilis) {
         this.tanggalRilis = tanggalRilis;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(nama);
+        parcel.writeString(deskripsi);
+        parcel.writeString(kategori);
+        parcel.writeInt(thumbnail);
+        parcel.writeString(lokasi);
+        parcel.writeInt(vote);
+        parcel.writeFloat(rate);
+        parcel.writeString(tanggalRilis);
     }
 }

@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,7 +52,12 @@ public class foodViewAdapter extends RecyclerView.Adapter<foodViewAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int pos = holder.getAdapterPosition();
 
-        holder.ivFood.setImageResource(data.get(pos).getThumbnail());
+        //  holder.ivFood.setImageResource(data.get(pos).getThumbnail());
+        //  cara Glide
+        Glide.with(holder.itemView.getContext())
+                .load(data.get(pos).getThumbnail())
+                .placeholder(R.drawable.ic_broken_image_24)
+                .into(holder.ivFood);
         holder.tvFoodName.setText(data.get(pos).getNama());
         //buat onclick Listener untuk intent ke detail
         //itemView = 1 kartu penuh

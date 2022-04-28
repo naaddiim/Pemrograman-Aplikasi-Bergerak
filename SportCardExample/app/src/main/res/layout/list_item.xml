@@ -23,28 +23,28 @@
             android:padding="8dp"
             android:layout_alignBottom="@id/ivSport"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            style="@style/TextAppearance.AppCompat.Headline"
+            style="@style/SportsTitle"
             tools:text="Title"
             />
 
-        <TextView
-            android:id="@+id/tvNewsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ivSport"
-            android:textColor="?android:textColorSecondary"
-            tools:text="News Title"
-            android:padding="8dp"
-            style="@style/TextAppearance.AppCompat.Subhead"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/tvNewsTitle"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/ivSport"-->
+<!--            android:textColor="?android:textColorSecondary"-->
+<!--            tools:text="News Title"-->
+<!--            android:padding="8dp"-->
+<!--            style="@style/TextAppearance.AppCompat.Subhead"-->
+<!--            />-->
 
         <TextView
             android:id="@+id/tvSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvNewsTitle"
+            android:layout_below="@+id/tvTitle"
             android:padding="8dp"
-            style="@style/TextAppearance.AppCompat.Subhead"
+            style="@style/SportsDetailText"
             tools:text="Sub Title"/>
 
     </RelativeLayout>

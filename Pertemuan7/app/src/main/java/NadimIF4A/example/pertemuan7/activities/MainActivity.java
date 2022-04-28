@@ -22,6 +22,7 @@ import java.util.List;
 import NadimIF4A.example.pertemuan7.R;
 import NadimIF4A.example.pertemuan7.adapters.foodViewAdapter;
 import NadimIF4A.example.pertemuan7.models.food;
+import NadimIF4A.example.pertemuan7.utils.Constant;
 import NadimIF4A.example.pertemuan7.utils.ItemClickListener;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,14 +68,12 @@ public class MainActivity extends AppCompatActivity {
     //intent pindah ke method ini
     private void onFoodItemClick(food food, int i) {
         Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra("FOOD_NAME", food.getNama());
-        intent.putExtra("THUMBNAIL", food.getThumbnail());
-        intent.putExtra("RATE", food.getRate());
-        intent.putExtra("VOTE", food.getVote());
-        intent.putExtra("RELEASE_DATE", food.getTanggalRilis());
-        intent.putExtra("OVERVIEW", food.getDeskripsi());
+        //memanggil intent dari kelas Constant dan mengirim kelas Food
+        intent.putExtra(Constant.EXTRA_FOOD_DATA, food);
         startActivity(intent);
     }
+
+    //Serializable vs Parcelable
 
     private List<food> getDummyData() {
         List<food> data = new ArrayList<>();

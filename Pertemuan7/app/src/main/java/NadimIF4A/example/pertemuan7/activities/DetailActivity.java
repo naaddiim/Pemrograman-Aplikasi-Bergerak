@@ -6,16 +6,16 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import NadimIF4A.example.pertemuan7.R;
+import NadimIF4A.example.pertemuan7.models.food;
+import NadimIF4A.example.pertemuan7.utils.Constant;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private String foodName;
-    private float rating;
-    private String overview;
-    private String releaseDate;
-    private Integer voting;
-    private int thumbnail;
+    //import class food
+    private food food;
 
     private ImageView ivThumbnail;
     private TextView tvFoodName, tvRating, tvVoting, tvReleaseDate, tvOverview;
@@ -25,12 +25,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        foodName = getIntent().getExtras().getString("FOOD_NAME");
-        thumbnail = getIntent().getExtras().getInt("THUMBNAIL");
-        rating = getIntent().getExtras().getFloat("RATE");
-        voting = getIntent().getExtras().getInt("VOTE");
-        releaseDate = getIntent().getExtras().getString("RELEASE_DATE");
-        overview = getIntent().getExtras().getString("OVERVIEW");
+        food = getIntent().getParcelableExtra(Constant.EXTRA_FOOD_DATA);
 
         ivThumbnail = findViewById(R.id.ivDetail);
         tvFoodName = findViewById(R.id.tvTitle);
@@ -39,12 +34,18 @@ public class DetailActivity extends AppCompatActivity {
         tvReleaseDate = findViewById(R.id.tvReleaseDate);
         tvOverview = findViewById(R.id.tvDescription);
 
-        ivThumbnail.setImageResource(thumbnail);
-        tvFoodName.setText(foodName);
-        tvRating.setText(String.valueOf(rating));
-        tvVoting.setText(String.valueOf(voting));
-        tvReleaseDate.setText(releaseDate);
-        tvOverview.setText(overview);
+
+        //ivThumbnail.setImageResource(food.getThumbnail());
+        Glide.with(getApplicationContext())
+                .load(food.getThumbnail())
+                .placeholder(R.drawable.ic_broken_image_24)
+                .into(ivThumbnail);
+
+        tvFoodName.setText(food.getNama());
+        tvRating.setText(String.valueOf(food.getRate()));
+        tvVoting.setText(String.valueOf(food.getVote()));
+        tvReleaseDate.setText(food.getTanggalRilis());
+        tvOverview.setText(food.getDeskripsi());
     }
 
     //tujuan ????

@@ -2,6 +2,7 @@ package com.example.sportcardexample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,17 +43,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        rvSport.setLayoutManager(new LinearLayoutManager(this));
+        int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
+
+//        rvSport.setLayoutManager(new LinearLayoutManager(this));
+        rvSport.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
         sportViewAdapter = new SportViewAdapter(mSportData, this);
         rvSport.setAdapter(sportViewAdapter);
 
         insertDummyData();
 
-
+        int swipeDirs;
+        if (gridColumnCount > 1) {
+            swipeDirs = 0;
+        }
+        else {
+            swipeDirs = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        }
 
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT | ItemTouchHelper.DOWN |
-                ItemTouchHelper.UP, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                ItemTouchHelper.UP, swipeDirs) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 int from = viewHolder.getAdapterPosition();

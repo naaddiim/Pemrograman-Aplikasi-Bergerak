@@ -22,6 +22,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         tvSportTitleDetail = findViewById(R.id.tvTitleDetail);
+        tvSportsSubTitle = findViewById(R.id.tvSubTitleDetail);
         ivSportDetail = findViewById(R.id.ivSportDetail);
 
         tvSportTitleDetail.setText(getIntent().getStringExtra("TITLE"));
