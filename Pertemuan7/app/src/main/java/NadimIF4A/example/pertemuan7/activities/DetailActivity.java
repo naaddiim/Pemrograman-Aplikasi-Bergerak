@@ -5,12 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
 import NadimIF4A.example.pertemuan7.R;
+import NadimIF4A.example.pertemuan7.models.ResponseData;
 import NadimIF4A.example.pertemuan7.models.food;
+import NadimIF4A.example.pertemuan7.services.APIService;
 import NadimIF4A.example.pertemuan7.utils.Constant;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -25,7 +33,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        food = getIntent().getParcelableExtra(Constant.EXTRA_FOOD_DATA);
+        //ambil parameter ID dari main activity
+        String idMeal = getIntent().getExtras().getString(Constant.EXTRA_MEALS_ID);
 
         ivThumbnail = findViewById(R.id.ivDetail);
         tvFoodName = findViewById(R.id.tvTitle);
@@ -34,18 +43,20 @@ public class DetailActivity extends AppCompatActivity {
         tvReleaseDate = findViewById(R.id.tvReleaseDate);
         tvOverview = findViewById(R.id.tvDescription);
 
+        //panggil fungsi dengan parameter id yang didapat
+        getMealsDetail(idMeal);
 
-        //ivThumbnail.setImageResource(food.getThumbnail());
-        Glide.with(getApplicationContext())
-                .load(food.getThumbnail())
-                .placeholder(R.drawable.ic_broken_image_24)
-                .into(ivThumbnail);
 
-        tvFoodName.setText(food.getNama());
-        tvRating.setText(String.valueOf(food.getRate()));
-        tvVoting.setText(String.valueOf(food.getVote()));
-        tvReleaseDate.setText(food.getTanggalRilis());
-        tvOverview.setText(food.getDeskripsi());
+//        Glide.with(getApplicationContext())
+//                .load(food.getThumbnail())
+//                .placeholder(R.drawable.ic_broken_image_24)
+//                .into(ivThumbnail);
+//
+//        tvFoodName.setText(food.getNama());
+//        tvRating.setText(String.valueOf(food.getRate()));
+//        tvVoting.setText(String.valueOf(food.getVote()));
+//        tvReleaseDate.setText(food.getTanggalRilis());
+//        tvOverview.setText(food.getDeskripsi());
     }
 
     //tujuan ????
@@ -59,5 +70,34 @@ public class DetailActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         finish();
         return true;
+    }
+
+    //buat fungsi dengan parameter id (untuk query search)
+    private void getMealsDetail(String idMeal) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.BASE_URL)
+                //convert JSON ke model java
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService apiService = retrofit.create(APIService.class);
+        apiService.getMealDetail(idMeal).enqueue(new Callback<ResponseData>() {
+            @Override
+            public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                if(response.code() == 200) {
+
+                    Toast.makeText(DetailActivity.this, "Response Success", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(DetailActivity.this, "Response code : "+response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseData> call, Throwable t) {
+                System.out.println("Retrofit Error: " + t.getMessage());
+                Toast.makeText(DetailActivity.this, "Rerofit Error" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            });
     }
 }

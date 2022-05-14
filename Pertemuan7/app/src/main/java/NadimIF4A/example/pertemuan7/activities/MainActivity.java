@@ -15,20 +15,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import NadimIF4A.example.pertemuan7.R;
 import NadimIF4A.example.pertemuan7.adapters.foodViewAdapter;
+import NadimIF4A.example.pertemuan7.models.ResponseData;
+import NadimIF4A.example.pertemuan7.models.ResponseMeal;
 import NadimIF4A.example.pertemuan7.models.food;
+import NadimIF4A.example.pertemuan7.services.APIService;
 import NadimIF4A.example.pertemuan7.utils.Constant;
 import NadimIF4A.example.pertemuan7.utils.ItemClickListener;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView rvFood;
     private foodViewAdapter foodViewAdapter;
-    private List<food> foodList = new ArrayList<>();
+    private List<ResponseMeal> foodList = new ArrayList<>();
 
 
     @Override
@@ -38,14 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
         rvFood = findViewById(R.id.rvFood);
 
-        foodList = getDummyData();
+//        foodList = getDummyData();
         //methode onFoodItemClick buat sendiri
-        foodViewAdapter = new foodViewAdapter((ItemClickListener<food>) this::onFoodItemClick);
+        foodViewAdapter = new foodViewAdapter((ItemClickListener<ResponseMeal>) this::onFoodItemClick);
 //        rvFood.setLayoutManager(new LinearLayoutManager(this));
         //hanya bisa set jumlah kolom
         rvFood.setLayoutManager(new GridLayoutManager(this, 2));
         rvFood.setAdapter(foodViewAdapter);
         foodViewAdapter.setData(foodList);
+
+        getChickenFood();
 
         //shift+f6 untuk mengganti semua kata yang sama
         //ctrl+d diujung line untuk menduplikat 1 line tanpat harus di blok
@@ -66,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //intent pindah ke method ini
-    private void onFoodItemClick(food food, int i) {
+    private void onFoodItemClick(ResponseMeal responseMeal, int i) {
         Intent intent = new Intent(this, DetailActivity.class);
-        //memanggil intent dari kelas Constant dan mengirim kelas Food
-        intent.putExtra(Constant.EXTRA_FOOD_DATA, food);
+//      memanggil intent dari kelas Constant dan mengirim kelas Food
+        intent.putExtra(Constant.EXTRA_MEALS_ID, responseMeal.getIdMeal());
         startActivity(intent);
     }
 
@@ -102,6 +113,35 @@ public class MainActivity extends AppCompatActivity {
         //dan seterusnya
 
         return data;
+    }
+
+    private void getChickenFood() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constant.BASE_URL)
+                //convert JSON ke model java
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        APIService apiService = retrofit.create(APIService.class);
+        apiService.getMeals("Chicken").enqueue(new Callback<ResponseData>() {
+            @Override
+            public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
+                if(response.code() == 200) {
+                    foodList = response.body().getMeals();
+                    foodViewAdapter.setData(foodList);
+                    Toast.makeText(MainActivity.this, "Response Success", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Response code : "+response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseData> call, Throwable t) {
+                System.out.println("Retrofit Error: " + t.getMessage());
+                Toast.makeText(MainActivity.this, "Rerofit Error" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
