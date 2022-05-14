@@ -18,20 +18,21 @@ import java.util.List;
 
 import NadimIF4A.example.pertemuan7.R;
 import NadimIF4A.example.pertemuan7.activities.DetailActivity;
+import NadimIF4A.example.pertemuan7.models.ResponseMeal;
 import NadimIF4A.example.pertemuan7.models.food;
 import NadimIF4A.example.pertemuan7.utils.ItemClickListener;
 
 //Ketik alt enter pada error line
 public class foodViewAdapter extends RecyclerView.Adapter<foodViewAdapter.ViewHolder> {
     //gunakan List karena class food akan digunakan untuk banyak data
-    private List<food> data = new ArrayList<>();
-    private ItemClickListener<food> itemClickListener;
+    private List<ResponseMeal> data = new ArrayList<>();
+    private ItemClickListener<ResponseMeal> itemClickListener;
 
-    public foodViewAdapter(ItemClickListener<food> itemClickListener) {
+    public foodViewAdapter(ItemClickListener<ResponseMeal> itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
-    public void setData(List<food> data) {
+    public void setData(List<ResponseMeal> data) {
         this.data = data;
         notifyDataSetChanged();
     }
@@ -55,10 +56,10 @@ public class foodViewAdapter extends RecyclerView.Adapter<foodViewAdapter.ViewHo
         //  holder.ivFood.setImageResource(data.get(pos).getThumbnail());
         //  cara Glide
         Glide.with(holder.itemView.getContext())
-                .load(data.get(pos).getThumbnail())
+                .load(data.get(pos).getStrMealThumb())
                 .placeholder(R.drawable.ic_broken_image_24)
                 .into(holder.ivFood);
-        holder.tvFoodName.setText(data.get(pos).getNama());
+        holder.tvFoodName.setText(data.get(pos).getStrMeal());
         //buat onclick Listener untuk intent ke detail
         //itemView = 1 kartu penuh
         holder.itemView.setOnClickListener(new View.OnClickListener() {

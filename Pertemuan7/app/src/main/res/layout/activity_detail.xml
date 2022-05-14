@@ -112,7 +112,7 @@
             app:layout_constraintStart_toEndOf="@+id/cvImage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            tools:text="Teriyaki Chicken Casserole Super Premium Plus Suite 2022"/>
+            tools:text="Indomie Seleraku"/>
 
         <View
             android:id="@+id/viewLine"
