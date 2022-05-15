@@ -9,9 +9,6 @@ public class Constant {
     public static final String EXTRA_FOOD_VOTE = "VOTE";
     public static final String EXTRA_FOOD_RELEASE_DATE = "RELEASE_DATE";
     public static final String EXTRA_FOOD_OVERVIEW = "OVERVIEW";
-
     public static final String BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
-
-
     public static final String EXTRA_FOOD_DATA = "FOOD_DATA";
 }

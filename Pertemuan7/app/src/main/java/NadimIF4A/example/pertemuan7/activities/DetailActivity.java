@@ -9,8 +9,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import NadimIF4A.example.pertemuan7.R;
 import NadimIF4A.example.pertemuan7.models.ResponseData;
+import NadimIF4A.example.pertemuan7.models.ResponseMeal;
 import NadimIF4A.example.pertemuan7.models.food;
 import NadimIF4A.example.pertemuan7.services.APIService;
 import NadimIF4A.example.pertemuan7.utils.Constant;
@@ -24,6 +28,7 @@ public class DetailActivity extends AppCompatActivity {
 
     //import class food
     private food food;
+    private List<ResponseMeal> responseMeals;
 
     private ImageView ivThumbnail;
     private TextView tvFoodName, tvRating, tvVoting, tvReleaseDate, tvOverview;
@@ -46,20 +51,8 @@ public class DetailActivity extends AppCompatActivity {
         //panggil fungsi dengan parameter id yang didapat
         getMealsDetail(idMeal);
 
-
-//        Glide.with(getApplicationContext())
-//                .load(food.getThumbnail())
-//                .placeholder(R.drawable.ic_broken_image_24)
-//                .into(ivThumbnail);
-//
-//        tvFoodName.setText(food.getNama());
-//        tvRating.setText(String.valueOf(food.getRate()));
-//        tvVoting.setText(String.valueOf(food.getVote()));
-//        tvReleaseDate.setText(food.getTanggalRilis());
-//        tvOverview.setText(food.getDeskripsi());
     }
-
-    //tujuan ????
+    
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -85,7 +78,15 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseData> call, Response<ResponseData> response) {
                 if(response.code() == 200) {
+                    responseMeals = response.body().getMeals();
 
+                    Glide.with(getApplicationContext())
+                            .load(responseMeals.get(0).getStrMealThumb())
+                            .placeholder(R.drawable.ic_broken_image_24)
+                            .into(ivThumbnail);
+
+                    tvFoodName.setText(responseMeals.get(0).getStrMeal());
+                    tvOverview.setText(responseMeals.get(0).getStrInstruction());
                     Toast.makeText(DetailActivity.this, "Response Success", Toast.LENGTH_SHORT).show();
                 }
                 else {

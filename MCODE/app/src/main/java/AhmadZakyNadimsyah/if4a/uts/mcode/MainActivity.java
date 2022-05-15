@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 String tanggalLahir = tvDate.getText().toString();
                 //Ahmad Zaky Nadimsyah
                 String namaInisial1 = TextUtils.substring(nama, 0, 1);
+
                 String namaInisial2 = TextUtils.substring(nama, 6, 7);
                 String namaInisial3 = TextUtils.substring(nama, 11, 12);
                 //09-11-2001
