@@ -48,4 +48,10 @@ dependencies {
     //AppIntro
     implementation 'com.github.AppIntro:AppIntro:6.2.0'
 
+    //ImageSlider
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.1.0'
+
+    //ExpansionPanel
+    implementation 'com.github.florent37:expansionpanel:1.2.4'
+
 }

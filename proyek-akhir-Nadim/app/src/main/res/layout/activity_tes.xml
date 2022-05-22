@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TesActivity">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        >
+
+        <com.github.florent37.expansionpanel.ExpansionHeader
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:expansion_headerIndicator="@id/headerIndicator"
+            app:expansion_layout="@id/expansionLayout"
+            app:expansion_toggleOnClick="true">
+
+            <!-- HEADER -->
+            <TextView
+                android:layout_marginHorizontal="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="Specifications"
+                android:fontFamily="@font/montserrat_semibold"
+                android:textColor="@color/purple_harga"
+                android:background="@color/grey_specs_title"
+                />
+
+            ...
+            <!-- HEADER INDICATOR -->
+            <ImageView
+                android:layout_marginHorizontal="24dp"
+                android:adjustViewBounds="true"
+                android:id="@+id/headerIndicator"
+                android:layout_gravity="center_vertical|right"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+
+        </com.github.florent37.expansionpanel.ExpansionHeader>
+
+        <com.github.florent37.expansionpanel.ExpansionLayout
+            android:id="@+id/expansionLayout"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <!-- CONTENT -->
+            <TextView
+                android:layout_marginHorizontal="24dp"
+                android:id="@+id/tvSpecsLaptop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\nStorage : SSD 512 GB\n\nCPU : Intel Core I5\n\nGraphic : GTX 1650\n\nDimension : 5.6 inch
+                               \n\nHarga : 11.769.000"
+                android:textSize="15sp"
+                android:textColor="@color/black_specs_text"
+                android:fontFamily="@font/montserrat_semibold"
+                android:background="@color/grey_specs_content"
+                />
+
+        </com.github.florent37.expansionpanel.ExpansionLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

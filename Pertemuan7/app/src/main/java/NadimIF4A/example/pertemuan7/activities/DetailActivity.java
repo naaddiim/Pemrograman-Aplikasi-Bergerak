@@ -1,13 +1,22 @@
 package NadimIF4A.example.pertemuan7.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +36,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class DetailActivity extends AppCompatActivity {
 
     //import class food
-    private food food;
+    private ResponseMeal food;
     private List<ResponseMeal> responseMeals;
+    private ChipGroup cgTag;
+    private FloatingActionButton fabShare;
 
     private ImageView ivThumbnail;
     private TextView tvFoodName, tvRating, tvVoting, tvReleaseDate, tvOverview;
+    private YouTubePlayerView youTubePlayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +59,10 @@ public class DetailActivity extends AppCompatActivity {
         tvVoting = findViewById(R.id.tvVoteCOunt);
         tvReleaseDate = findViewById(R.id.tvReleaseDate);
         tvOverview = findViewById(R.id.tvDescription);
+        cgTag = findViewById(R.id.cgTag);
+        fabShare = findViewById(R.id.fabShare);
+        youTubePlayerView = findViewById(R.id.youtubeView);
+        getLifecycle().addObserver(youTubePlayerView);
 
         //panggil fungsi dengan parameter id yang didapat
         getMealsDetail(idMeal);
@@ -87,6 +103,51 @@ public class DetailActivity extends AppCompatActivity {
 
                     tvFoodName.setText(responseMeals.get(0).getStrMeal());
                     tvOverview.setText(responseMeals.get(0).getStrInstruction());
+
+                    tvRating.setText(responseMeals.get(0).getStrCategory());
+                    tvVoting.setText(responseMeals.get(0).getStrArea());
+                    tvReleaseDate.setText(idMeal);
+
+                    String tags = responseMeals.get(0).getStrTags();
+                    if(tags == null) {
+                        return;
+                    }
+                    else {
+                        String [] tag = tags.split(",");
+                        for(int i = 0; i < tag.length; i++) {
+                            Chip chip = new Chip(DetailActivity.this);
+                            chip.setText(tag[i]);
+                            chip.setChipBackgroundColorResource(R.color.purple_500);
+                            chip.setTextColor(getResources().getColor(R.color.white));
+                            cgTag.addView(chip);
+                        }
+                    }
+
+                    youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
+                        @Override
+                        public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+
+                            super.onReady(youTubePlayer);
+                            String videoURL = responseMeals.get(0).getStrYoutube();
+                            String [] strVideo = videoURL.split("v=");
+                            String videoId = strVideo[1];
+                            youTubePlayer.cueVideo(videoId, 0);
+                        }
+                    });
+
+                    fabShare.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent();
+                            intent.setAction(Intent.ACTION_SEND);
+                            intent.putExtra(Intent.EXTRA_TEXT, Constant.THEMEAL_SITE_URL+ responseMeals.get(0).getIdMeal());
+                            intent.setType("text/plain");
+                            Intent shareIntent = Intent.createChooser(intent, "Share text this with");
+                            startActivity(shareIntent);
+
+                        }
+                    });
+
                     Toast.makeText(DetailActivity.this, "Response Success", Toast.LENGTH_SHORT).show();
                 }
                 else {

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MyGadget</string>
+    <string name="text_appIntro1"><![CDATA[Find the Latest &\nStylish Gadget]]></string>
+    <string name="text_appIntro2">Latest prices and \nSpecifications</string>
+    <string name="text_appIntro3">Data from the Real \nStore</string>
 </resources>

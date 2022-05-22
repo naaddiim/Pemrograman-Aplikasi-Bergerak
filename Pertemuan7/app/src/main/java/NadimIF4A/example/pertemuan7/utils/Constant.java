@@ -11,4 +11,6 @@ public class Constant {
     public static final String EXTRA_FOOD_OVERVIEW = "OVERVIEW";
     public static final String BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
     public static final String EXTRA_FOOD_DATA = "FOOD_DATA";
+    public static final String THEMEAL_SITE_URL= "https://www.themealdb.com/meal/";
+
 }

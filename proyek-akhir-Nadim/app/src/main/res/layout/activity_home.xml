@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.HomeActivity"
+    android:scrollbars="none"
+    android:background="#F8F8FF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/my_gadget_logo"
+            android:adjustViewBounds="true"
+            android:layout_centerHorizontal="true"/>
+
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:iss_auto_cycle="true"
+            app:iss_period="3000"
+            app:iss_delay="0"
+            android:layout_below="@id/iv_logo"
+            android:layout_marginTop="28dp"
+            app:iss_placeholder="@drawable/ic_baseline_broken_image_24"/>
+
+        <TextView
+            android:id="@+id/tv_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Categories"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@id/image_slider"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_laptop_categories"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/tv_categories"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="12dp"
+            android:background="@drawable/bg_categories"
+            android:drawableTop="@drawable/ic_laptop_36"
+            android:paddingTop="10dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_hp_categories"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_toEndOf="@id/btn_laptop_categories"
+            android:layout_below="@id/tv_categories"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/bg_categories"
+            android:drawableTop="@drawable/ic_smartphone_36"
+            android:paddingTop="10dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_lain_categories"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_toEndOf="@id/btn_hp_categories"
+            android:layout_below="@id/tv_categories"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+            android:background="@drawable/bg_categories"
+            android:drawableTop="@drawable/ic_card_36"
+            android:paddingTop="10dp" />
+
+        <TextView
+            android:id="@+id/tv_laptop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Laptop"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@id/btn_laptop_categories"/>
+
+        <TextView
+            android:id="@+id/tv_more_laptop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="More"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="12dp"
+            android:textSize="17sp"
+            android:textColor="#766FFF"
+            android:layout_below="@id/btn_laptop_categories"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:id="@+id/tv_hp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Smartphone"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@id/tv_laptop"/>
+
+        <TextView
+            android:id="@+id/tv_more_hp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="More"
+            android:layout_marginTop="41dp"
+            android:layout_marginRight="12dp"
+            android:textSize="17sp"
+            android:textColor="#766FFF"
+            android:layout_below="@id/tv_more_laptop"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:id="@+id/tv_lain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Lainnya"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@id/tv_hp"/>
+
+        <TextView
+            android:id="@+id/tv_more_lain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semibold"
+            android:text="More"
+            android:layout_marginTop="41dp"
+            android:layout_marginRight="12dp"
+            android:textSize="17sp"
+            android:textColor="#766FFF"
+            android:layout_below="@id/tv_more_hp"
+            android:layout_alignParentEnd="true"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_toContact"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tv_more_lain"
+            android:layout_marginRight="15dp"
+            app:tint="@color/white"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#BEBBFD"
+            android:src="@drawable/ic_headset_mic_24"/>
+
+    </RelativeLayout>
+
+</ScrollView>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_appIntro1"><![CDATA[Find the Latest &\nStylish Gadget]]></string>
+    <string name="text_appIntro2">Latest prices and \nSpecifications</string>
+    <string name="text_appIntro3">Data from the Real \nStore</string>
+</resources>

@@ -65,7 +65,7 @@
             android:fontFamily="sans-serif-medium"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:drawableEnd="@drawable/ic_baseline_thumb_up_24"
+            android:drawableEnd="@drawable/ic_house_24"
             android:drawableTint="@color/purple_500"
             android:drawablePadding="3dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvRating"
@@ -114,16 +114,36 @@
             app:layout_constraintHorizontal_bias="0.0"
             tools:text="Indomie Seleraku"/>
 
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/tvRating"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/youtubeView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/cgTag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
         <View
             android:id="@+id/viewLine"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="28dp"
             android:layout_marginHorizontal="16dp"
             android:background="#EAE7EB"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cvImage"
+            app:layout_constraintTop_toBottomOf="@+id/youtubeView"
             app:layout_constraintHorizontal_bias="0.0"/>
 
 

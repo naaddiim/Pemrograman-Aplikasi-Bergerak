@@ -13,7 +13,15 @@
     <color name="grey_lighten_1">#bdbdbd</color>
     <color name="indigo_accent_3">#3d5afe</color>
     <color name="purple_deep_lighten_3">#b39ddb</color>
+    <color name="grey">#B0B0B0</color>
+    <color name="purple">#6C63FF</color>
+    <color name="grey_lighter">#CCCCFF</color>
     <color name="purple_harga">#6C63FF</color>
+    <color name="grey_specs_title">#FAFAFA</color>
+    <color name="grey_specs_content">#ECECEC</color>
+    <color name="grey_specs_dropdown">#A9A9A9</color>
+    <color name="black_specs_text">#3F3D56</color>
+    <color name="black_laptop_name_text">#1E1E1E</color>
 
 
 
